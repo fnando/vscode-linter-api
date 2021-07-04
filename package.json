@@ -1,0 +1,32 @@
+{
+  "author": "Nando Vieira <me@fnando.com> (https://nandovieira.com/)",
+  "bugs": {
+    "url": "https://github.com/fnando/vscode-linter-api/issues"
+  },
+  "dependencies": {
+    "@types/vscode": "^1.57.1"
+  },
+  "description": "",
+  "devDependencies": {
+    "typescript": "^4.3.5",
+    "vscode": "^1.1.37"
+  },
+  "homepage": "https://github.com/fnando/vscode-linter-api#readme",
+  "keywords": [
+    "vscode",
+    "vscode-linter",
+    "linter"
+  ],
+  "license": "MIT",
+  "main": "./out/index.js",
+  "name": "vscode-linter-api",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fnando/vscode-linter-api.git"
+  },
+  "scripts": {
+    "build": "rm -rf out && tsc"
+  },
+  "types": "./out/index.d.ts",
+  "version": "0.0.0-beta1"
+}
