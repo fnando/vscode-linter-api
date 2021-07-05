@@ -108,30 +108,30 @@ export type Line = {
  * This function must return the current with a end-of-line (eol) pragma to
  * ignore the offense.
  */
-export type LinterGetIgnoreEolPragmaFunction = (
-  line: Line,
-  code: string,
-) => string;
+export type LinterGetIgnoreEolPragmaFunction = (params: {
+  line: Line;
+  code: string;
+}) => string;
 
 /**
  * The `ignore-line` function.
  * This function must will receive the previous line (which could also contain)
  * a pragma instruction to ignore the next line with the offense.
  */
-export type LinterGetIgnoreLinePragmaFunction = (
-  line: Line,
-  code: string,
-  indent: string,
-) => string;
+export type LinterGetIgnoreLinePragmaFunction = (params: {
+  line: Line;
+  code: string;
+  indent: string;
+}) => string;
 
 /**
  * The `ignore-file` function.
  */
-export type LinterGetIgnoreFilePragmaFunction = (
-  line: Line,
-  code: string,
-  indent: string,
-) => string;
+export type LinterGetIgnoreFilePragmaFunction = (params: {
+  line: Line;
+  code: string;
+  indent: string;
+}) => string;
 
 /**
  * The function that processes the fixed output.
