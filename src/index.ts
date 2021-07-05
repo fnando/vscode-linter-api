@@ -108,14 +108,17 @@ export type Line = {
  * This function must return the current with a end-of-line (eol) pragma to
  * ignore the offense.
  */
-export type LinterIgnoreEolFunction = (line: Line, code: string) => string;
+export type LinterGetIgnoreEolPragmaFunction = (
+  line: Line,
+  code: string,
+) => string;
 
 /**
  * The `ignore-line` function.
  * This function must will receive the previous line (which could also contain)
  * a pragma instruction to ignore the next line with the offense.
  */
-export type LinterIgnoreLineFunction = (
+export type LinterGetIgnoreLinePragmaFunction = (
   line: Line,
   code: string,
   indent: string,
@@ -124,7 +127,7 @@ export type LinterIgnoreLineFunction = (
 /**
  * The `ignore-file` function.
  */
-export type LinterIgnoreFileFunction = (
+export type LinterGetIgnoreFilePragmaFunction = (
   line: Line,
   code: string,
   indent: string,
@@ -135,11 +138,11 @@ export type LinterIgnoreFileFunction = (
  * Some linters return a different format that needs to be parsed, and this
  * function allows us to do it so.
  */
-export type LinterFixOutputFunction = (
-  contents: string,
-  stdout: string,
-  stderr: string,
-) => string;
+export type LinterParseFixOutputFunction = (params: {
+  input: string;
+  stdout: string;
+  stderr: string;
+}) => string;
 
 /**
  * The function that parses either stdout/stderr and return a list of offenses
@@ -154,10 +157,10 @@ export type LinterGetOffensesFunction = (
  */
 export type Linter = {
   getOffenses: LinterGetOffensesFunction;
-  ignoreEol: LinterIgnoreEolFunction;
-  ignoreLine: LinterIgnoreLineFunction;
-  ignoreFile: LinterIgnoreFileFunction;
-  fixOutput: LinterFixOutputFunction;
+  getIgnoreEolPragma: LinterGetIgnoreEolPragmaFunction;
+  getIgnoreLinePragma: LinterGetIgnoreLinePragmaFunction;
+  getIgnoreFilePragma: LinterGetIgnoreFilePragmaFunction;
+  parseFixOutput: LinterParseFixOutputFunction;
 };
 
 /**

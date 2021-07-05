@@ -90,23 +90,27 @@ export declare type Line = {
  * This function must return the current with a end-of-line (eol) pragma to
  * ignore the offense.
  */
-export declare type LinterIgnoreEolFunction = (line: Line, code: string) => string;
+export declare type LinterGetIgnoreEolPragmaFunction = (line: Line, code: string) => string;
 /**
  * The `ignore-line` function.
  * This function must will receive the previous line (which could also contain)
  * a pragma instruction to ignore the next line with the offense.
  */
-export declare type LinterIgnoreLineFunction = (line: Line, code: string, indent: string) => string;
+export declare type LinterGetIgnoreLinePragmaFunction = (line: Line, code: string, indent: string) => string;
 /**
  * The `ignore-file` function.
  */
-export declare type LinterIgnoreFileFunction = (line: Line, code: string, indent: string) => string;
+export declare type LinterGetIgnoreFilePragmaFunction = (line: Line, code: string, indent: string) => string;
 /**
  * The function that processes the fixed output.
  * Some linters return a different format that needs to be parsed, and this
  * function allows us to do it so.
  */
-export declare type LinterFixOutputFunction = (contents: string, stdout: string, stderr: string) => string;
+export declare type LinterParseFixOutputFunction = (params: {
+    input: string;
+    stdout: string;
+    stderr: string;
+}) => string;
 /**
  * The function that parses either stdout/stderr and return a list of offenses
  * that will be displayed on the UI.
@@ -117,16 +121,16 @@ export declare type LinterGetOffensesFunction = (params: LinterParams) => Linter
  */
 export declare type Linter = {
     getOffenses: LinterGetOffensesFunction;
-    ignoreEol: LinterIgnoreEolFunction;
-    ignoreLine: LinterIgnoreLineFunction;
-    ignoreFile: LinterIgnoreFileFunction;
-    fixOutput: LinterFixOutputFunction;
+    getIgnoreEolPragma: LinterGetIgnoreEolPragmaFunction;
+    getIgnoreLinePragma: LinterGetIgnoreLinePragmaFunction;
+    getIgnoreFilePragma: LinterGetIgnoreFilePragmaFunction;
+    parseFixOutput: LinterParseFixOutputFunction;
 };
 /**
  * The command that will be executed.
  * The list must contain variables that will be replaced.
  *
- * The bult-in variables are:
+ * The built-in variables are:
  *
  * - `$file`: the full file path.
  * - `$extension`: the file's extension, in lowercase.
