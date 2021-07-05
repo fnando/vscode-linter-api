@@ -164,7 +164,7 @@ export type Linter = {
  * The command that will be executed.
  * The list must contain variables that will be replaced.
  *
- * The bult-in variables are:
+ * The built-in variables are:
  *
  * - `$file`: the full file path.
  * - `$extension`: the file's extension, in lowercase.
