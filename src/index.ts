@@ -145,10 +145,15 @@ export type LinterFixOutputFunction = (
  * The function that parses either stdout/stderr and return a list of offenses
  * that will be displayed on the UI.
  */
-export type LinterCallFunction = (params: LinterParams) => LinterOffense[];
+export type LinterGetOffensesFunction = (
+  params: LinterParams,
+) => LinterOffense[];
 
+/**
+ * Define a linter api.
+ */
 export type Linter = {
-  call: LinterCallFunction;
+  getOffenses: LinterGetOffensesFunction;
   ignoreEol: LinterIgnoreEolFunction;
   ignoreLine: LinterIgnoreLineFunction;
   ignoreFile: LinterIgnoreFileFunction;

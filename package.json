@@ -3,9 +3,6 @@
   "bugs": {
     "url": "https://github.com/fnando/vscode-linter-api/issues"
   },
-  "dependencies": {
-    "@types/vscode": "^1.57.1"
-  },
   "description": "",
   "devDependencies": {
     "typescript": "^4.3.5",
