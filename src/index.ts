@@ -157,10 +157,10 @@ export type LinterGetOffensesFunction = (
  */
 export type Linter = {
   getOffenses: LinterGetOffensesFunction;
-  getIgnoreEolPragma: LinterGetIgnoreEolPragmaFunction;
-  getIgnoreLinePragma: LinterGetIgnoreLinePragmaFunction;
-  getIgnoreFilePragma: LinterGetIgnoreFilePragmaFunction;
-  parseFixOutput: LinterParseFixOutputFunction;
+  getIgnoreEolPragma?: LinterGetIgnoreEolPragmaFunction;
+  getIgnoreLinePragma?: LinterGetIgnoreLinePragmaFunction;
+  getIgnoreFilePragma?: LinterGetIgnoreFilePragmaFunction;
+  parseFixOutput?: LinterParseFixOutputFunction;
 };
 
 /**

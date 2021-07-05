@@ -132,10 +132,10 @@ export declare type LinterGetOffensesFunction = (params: LinterParams) => Linter
  */
 export declare type Linter = {
     getOffenses: LinterGetOffensesFunction;
-    getIgnoreEolPragma: LinterGetIgnoreEolPragmaFunction;
-    getIgnoreLinePragma: LinterGetIgnoreLinePragmaFunction;
-    getIgnoreFilePragma: LinterGetIgnoreFilePragmaFunction;
-    parseFixOutput: LinterParseFixOutputFunction;
+    getIgnoreEolPragma?: LinterGetIgnoreEolPragmaFunction;
+    getIgnoreLinePragma?: LinterGetIgnoreLinePragmaFunction;
+    getIgnoreFilePragma?: LinterGetIgnoreFilePragmaFunction;
+    parseFixOutput?: LinterParseFixOutputFunction;
 };
 /**
  * The command that will be executed.
