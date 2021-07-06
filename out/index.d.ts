@@ -61,7 +61,7 @@ export declare type LinterOffense = {
     /**
      * The documentation url for this offense.
      */
-    url?: string;
+    docsUrl?: string;
 };
 export declare type LinterParams = {
     /**

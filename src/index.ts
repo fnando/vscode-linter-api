@@ -73,7 +73,7 @@ export type LinterOffense = {
   /**
    * The documentation url for this offense.
    */
-  url?: string;
+  docsUrl?: string;
 };
 
 export type LinterParams = {
