@@ -218,6 +218,12 @@ declare type LinterConfigType = {
      */
     url: string;
     /**
+     * When linter should be ran. Right now, the only accepted value is
+     * `$is-rails`, which identifies whether the current directory is a Ruby on
+     * Rails application by checking for a Gemfile that matches `gem "rails"`.
+     */
+    when: string[];
+    /**
      * @private
      */
     importPath?: string;
