@@ -62,6 +62,32 @@ export declare type LinterOffense = {
      * The documentation url for this offense.
      */
     docsUrl?: string;
+    /**
+     * The inline fix for a given offense.
+     * If linter returns an offset-based fix, then you need to set
+     * `{replacement,  offset}`; use `{replacement, start, end}` instead if you
+     * have the starting/ending lines and column positions.
+     */
+    inlineFix?: {
+        replacement: string;
+        start: {
+            column: number;
+            line: number;
+        };
+        end: {
+            column: number;
+            line: number;
+        };
+    } | {
+        replacement: string;
+        offset: [number, number];
+    };
+    /**
+     * Meta information related to the offense.
+     * This can be any value that the linter may need to store in order to perform
+     * things like inline fixing.
+     */
+    meta?: unknown;
 };
 export declare type LinterParams = {
     /**
