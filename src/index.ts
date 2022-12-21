@@ -268,6 +268,7 @@ type LinterConfigType = {
     [key: string]: {
       languages?: string[];
       extensions?: string[];
+      shebangs?: string[];
     };
   };
 
@@ -289,7 +290,6 @@ type LinterConfigType = {
   importPath?: string;
 };
 
-export type LinterConfig = LinterConfigType &
-  {
-    [key in keyof LinterConfigType]: unknown;
-  };
+export type LinterConfig = LinterConfigType & {
+  [key in keyof LinterConfigType]: unknown;
+};
