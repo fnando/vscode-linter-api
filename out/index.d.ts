@@ -237,6 +237,7 @@ declare type LinterConfigType = {
         [key: string]: {
             languages?: string[];
             extensions?: string[];
+            shebangs?: string[];
         };
     };
     /**
