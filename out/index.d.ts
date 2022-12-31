@@ -147,6 +147,7 @@ export declare type LinterParseFixOutputFunction = (params: {
     input: string;
     stdout: string;
     stderr: string;
+    uri: Uri;
 }) => string;
 /**
  * The function that parses either stdout/stderr and return a list of offenses
