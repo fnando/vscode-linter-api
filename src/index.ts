@@ -166,6 +166,7 @@ export type LinterParseFixOutputFunction = (params: {
   input: string;
   stdout: string;
   stderr: string;
+  uri: Uri;
 }) => string;
 
 /**
