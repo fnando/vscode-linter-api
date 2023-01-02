@@ -135,7 +135,7 @@ export type Line = {
 export type LinterGetIgnoreEolPragmaFunction = (params: {
   line: Line;
   code: string;
-}) => string;
+}) => Promise<string>;
 
 /**
  * The `ignore-line` function.
@@ -146,7 +146,7 @@ export type LinterGetIgnoreLinePragmaFunction = (params: {
   line: Line;
   code: string;
   indent: string;
-}) => string;
+}) => Promise<string>;
 
 /**
  * The `ignore-file` function.
@@ -156,7 +156,7 @@ export type LinterGetIgnoreFilePragmaFunction = (params: {
   code: string;
   indent: string;
   document: TextDocument;
-}) => string;
+}) => Promise<string>;
 
 /**
  * The function that processes the fixed output.
@@ -168,7 +168,7 @@ export type LinterParseFixOutputFunction = (params: {
   stdout: string;
   stderr: string;
   uri: Uri;
-}) => string;
+}) => Promise<string>;
 
 /**
  * The function that parses either stdout/stderr and return a list of offenses
@@ -176,7 +176,7 @@ export type LinterParseFixOutputFunction = (params: {
  */
 export type LinterGetOffensesFunction = (
   params: LinterParams,
-) => LinterOffense[];
+) => Promise<LinterOffense[]>;
 
 /**
  * Define a linter api.

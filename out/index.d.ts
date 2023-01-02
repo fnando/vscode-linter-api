@@ -8,7 +8,7 @@ export declare enum LinterOffenseSeverity {
     information = 2,
     hint = 3
 }
-export declare type LinterOffense = {
+export type LinterOffense = {
     /**
      * The offense public code. This identifies the offense and will be used as
      * part of the diagnostic identifier.
@@ -89,7 +89,7 @@ export declare type LinterOffense = {
      */
     meta?: unknown;
 };
-export declare type LinterParams = {
+export type LinterParams = {
     /**
      * The document uri.
      */
@@ -107,7 +107,7 @@ export declare type LinterParams = {
      */
     status: number;
 };
-export declare type Line = {
+export type Line = {
     text: string;
     number: number;
 };
@@ -116,49 +116,49 @@ export declare type Line = {
  * This function must return the current with a end-of-line (eol) pragma to
  * ignore the offense.
  */
-export declare type LinterGetIgnoreEolPragmaFunction = (params: {
+export type LinterGetIgnoreEolPragmaFunction = (params: {
     line: Line;
     code: string;
-}) => string;
+}) => Promise<string>;
 /**
  * The `ignore-line` function.
  * This function must will receive the previous line (which could also contain)
  * a pragma instruction to ignore the next line with the offense.
  */
-export declare type LinterGetIgnoreLinePragmaFunction = (params: {
+export type LinterGetIgnoreLinePragmaFunction = (params: {
     line: Line;
     code: string;
     indent: string;
-}) => string;
+}) => Promise<string>;
 /**
  * The `ignore-file` function.
  */
-export declare type LinterGetIgnoreFilePragmaFunction = (params: {
+export type LinterGetIgnoreFilePragmaFunction = (params: {
     line: Line;
     code: string;
     indent: string;
     document: TextDocument;
-}) => string;
+}) => Promise<string>;
 /**
  * The function that processes the fixed output.
  * Some linters return a different format that needs to be parsed, and this
  * function allows us to do it so.
  */
-export declare type LinterParseFixOutputFunction = (params: {
+export type LinterParseFixOutputFunction = (params: {
     input: string;
     stdout: string;
     stderr: string;
     uri: Uri;
-}) => string;
+}) => Promise<string>;
 /**
  * The function that parses either stdout/stderr and return a list of offenses
  * that will be displayed on the UI.
  */
-export declare type LinterGetOffensesFunction = (params: LinterParams) => LinterOffense[];
+export type LinterGetOffensesFunction = (params: LinterParams) => Promise<LinterOffense[]>;
 /**
  * Define a linter api.
  */
-export declare type Linter = {
+export type Linter = {
     getOffenses: LinterGetOffensesFunction;
     getIgnoreEolPragma?: LinterGetIgnoreEolPragmaFunction;
     getIgnoreLinePragma?: LinterGetIgnoreLinePragmaFunction;
@@ -182,8 +182,8 @@ export declare type Linter = {
  * - `$fixOne`: `true` when trying to fix one offense.
  * - `$fixCategory`: `true` when trying to fix one whole category.
  */
-export declare type Command = string[] | string[][];
-declare type LinterConfigType = {
+export type Command = string[] | string[][];
+type LinterConfigType = {
     /**
      * The linter name.
      * Must match the extension's name.
@@ -257,7 +257,7 @@ declare type LinterConfigType = {
      */
     importPath?: string;
 };
-export declare type LinterConfig = LinterConfigType & {
+export type LinterConfig = LinterConfigType & {
     [key in keyof LinterConfigType]: unknown;
 };
 export {};
