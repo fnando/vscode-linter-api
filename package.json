@@ -25,5 +25,5 @@
     "build": "rm -rf out && tsc"
   },
   "types": "./out/index.d.ts",
-  "version": "0.0.0-beta3"
+  "version": "0.0.0-beta4"
 }
