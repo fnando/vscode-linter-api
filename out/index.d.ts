@@ -1,4 +1,4 @@
-import { Uri } from "vscode";
+import { Uri, TextDocument } from "vscode";
 /**
  * The offense's severity.
  */
@@ -137,6 +137,7 @@ export declare type LinterGetIgnoreFilePragmaFunction = (params: {
     line: Line;
     code: string;
     indent: string;
+    document: TextDocument;
 }) => string;
 /**
  * The function that processes the fixed output.

@@ -1,4 +1,4 @@
-import { DiagnosticSeverity, Uri } from "vscode";
+import { DiagnosticSeverity, Uri, TextDocument } from "vscode";
 
 /**
  * The offense's severity.
@@ -155,6 +155,7 @@ export type LinterGetIgnoreFilePragmaFunction = (params: {
   line: Line;
   code: string;
   indent: string;
+  document: TextDocument;
 }) => string;
 
 /**
